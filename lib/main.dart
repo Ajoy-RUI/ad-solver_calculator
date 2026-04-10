@@ -139,10 +139,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 children: [
                   Row(
                     children: [
-                      buildButton('C', Colors.orange[400]!),
+                      buildButton('AC', Colors.orange[400]!),
                       buildButton('π', Colors.orange[200]!),
                       buildButton('e', Colors.orange[200]!),
-                      buildButton('*', Colors.purple[300]!),
+                      buildButton('x', Colors.green[300]!),
 
 
 
@@ -155,7 +155,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('7', Colors.grey[200]!),
                         buildButton('8', Colors.grey[200]!),
                         buildButton('9', Colors.grey[200]!),
-                        buildButton('/', Colors.purple[300]!),
+                        buildButton('/', Colors.green[300]!),
 
 
 
@@ -169,7 +169,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('4', Colors.grey[200]!),
                         buildButton('5', Colors.grey[200]!),
                         buildButton('6', Colors.grey[200]!),
-                        buildButton('-', Colors.purple[300]!),
+                        buildButton('-', Colors.green[300]!),
 
 
 
@@ -183,7 +183,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('1', Colors.grey[200]!),
                         buildButton('2', Colors.grey[200]!),
                         buildButton('3', Colors.grey[200]!),
-                        buildButton('+', Colors.purple[300]!),
+                        buildButton('+', Colors.green[300]!),
 
 
 
@@ -197,7 +197,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('.', Colors.grey[400]!),
                         buildButton('0', Colors.grey[200]!),
                         buildButton('del', Colors.grey[200]!),
-                        buildButton('=', Colors.deepPurple[400]!),
+                        buildButton('=', Colors.deepPurpleAccent[100]!),
 
 
 
