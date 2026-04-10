@@ -32,12 +32,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   String display = '0';
 
-  int Flex = 1;
 
 
   buttonPressed(String buttonText){
     setState(() {
-      if(buttonText == 'C'){
+      if(buttonText == 'AC'){
         display = '0';
       }
 
@@ -56,6 +55,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           String finalExpression = display;
           finalExpression = finalExpression.replaceAll('π', '3.14159265');
           finalExpression = finalExpression.replaceAll('e', '2.718281828');
+          finalExpression = finalExpression.replaceAll('x', '*');
+          finalExpression = finalExpression.replaceAll('%', '/100');
+
 
           GrammarParser p = GrammarParser();
           Expression exp = p.parse(finalExpression);
@@ -64,7 +66,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           ContextModel cm = ContextModel();
           double eval = exp.evaluate(EvaluationType.REAL, cm);
 
-          display = eval.toString();
+          display = double.parse(eval.toStringAsFixed(8)).toString();
 
           if(display.endsWith('.0')){
             display = display.substring(0, display.length - 2);
@@ -142,7 +144,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       buildButton('AC', Colors.orange[400]!),
                       buildButton('π', Colors.orange[200]!),
                       buildButton('e', Colors.orange[200]!),
-                      buildButton('x', Colors.green[300]!),
+                      buildButton('%', Colors.green[300]!),
 
 
 
@@ -155,7 +157,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('7', Colors.grey[200]!),
                         buildButton('8', Colors.grey[200]!),
                         buildButton('9', Colors.grey[200]!),
-                        buildButton('/', Colors.green[300]!),
+                        buildButton('x', Colors.green[300]!),
 
 
 
@@ -169,7 +171,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('4', Colors.grey[200]!),
                         buildButton('5', Colors.grey[200]!),
                         buildButton('6', Colors.grey[200]!),
-                        buildButton('-', Colors.green[300]!),
+                        buildButton('/', Colors.green[300]!),
 
 
 
@@ -183,7 +185,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('1', Colors.grey[200]!),
                         buildButton('2', Colors.grey[200]!),
                         buildButton('3', Colors.grey[200]!),
-                        buildButton('+', Colors.green[300]!),
+                        buildButton('-', Colors.green[300]!),
 
 
 
@@ -197,13 +199,18 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         buildButton('.', Colors.grey[400]!),
                         buildButton('0', Colors.grey[200]!),
                         buildButton('del', Colors.grey[200]!),
-                        buildButton('=', Colors.deepPurpleAccent[100]!),
+                        buildButton('+', Colors.green[300]!),
 
 
 
 
                       ]
                   ),
+                  Row(
+                    children: [
+                      buildButton('=', Colors.deepPurpleAccent[100]! , flex: 4)
+                    ],
+                  )
 
 
                 ]
@@ -226,24 +233,26 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
 
 
-  Widget buildButton(String buttonText, Color buttonColor){
+  Widget buildButton(String buttonText, Color buttonColor,{int flex = 1}){
     return Expanded(
+      flex: flex,
       child: Container(
         margin: EdgeInsets.all(8),
+        height: 70,
 
         decoration: BoxDecoration(
           color: buttonColor,
-          shape: BoxShape.circle,
+          borderRadius: BorderRadius.circular(40),
           boxShadow: [
-            BoxShadow(
+           const  BoxShadow(
               color: Colors.white,
-              offset: Offset(-4, -4),
+              offset:  Offset(-4, -4),
               blurRadius: 14,
             ),
 
             BoxShadow(
               color: Colors.grey.shade300,
-              offset: Offset(4, 4),
+              offset: const Offset(4, 4),
               blurRadius: 10,
             ),
 
@@ -258,16 +267,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           //surfaceTintColor: Colors.red,
 
           color: Colors.transparent,
-          shape: CircleBorder(),
+          shape: const StadiumBorder(),
           child: InkWell(
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(40),
             onTap: (){
               buttonPressed(buttonText);
 
             },
             child: Padding(padding: EdgeInsets.all(22),
               child: Center(
-                child: Text(buttonText, style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold,),),
+                child: Text(buttonText, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,),),
 
               ),
 
