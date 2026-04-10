@@ -1,15 +1,10 @@
-# solver_calculator
+# solver_calculator_flutter
 
-A new Flutter project.
+A new Flutter project. Make a simple claculator based on flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This project is a simple calculator app using flutter and dart language.
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
